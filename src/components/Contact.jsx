@@ -164,12 +164,7 @@ export default function Contact() {
               >
                 {status.message}
               </p>
-            )}
-
-            <p className="text-[11px] text-white/40 mt-2">
-              Configure EmailJS env vars in `.env.local`:  
-              NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY.
-            </p>
+            )}   
           </div>
         </form>
       </div>
