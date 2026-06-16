@@ -9,7 +9,8 @@ export const metadata = {
     default: "Ankit Mishra | Full Stack Developer",
     template: "%s | Ankit Mishra",
   },
-  description: "Full Stack Developer (MERN + Next.js). Building modern, scalable, AI-infused web apps.",
+  description:
+    "Full Stack Developer | Next.js · React · Node.js · PostgreSQL · AI Integration. I build full-stack web applications that ship.",
   openGraph,
   icons: { icon: "/favicon.svg" }
 };

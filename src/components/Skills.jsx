@@ -2,26 +2,51 @@
 import Section from "@/components/Section";
 import { motion } from "framer-motion";
 
-const skillSpheres = [
-  { label: "React", radius: 90, angle: 10, speed: 14 },
-  { label: "Next.js", radius: 115, angle: 60, speed: 18 },
-  { label: "LLM Integration", radius: 85, angle: 130, speed: 12 },
-  { label: "Tailwind", radius: 125, angle: 200, speed: 20 },
-  { label: "Node.js", radius: 100, angle: 250, speed: 16 },
-  { label: "Express", radius: 110, angle: 310, speed: 17 },
-  { label: "MongoDB", radius: 70, angle: 340, speed: 10 },
-
-  // calm deeper layer
-  { label: "PostgreSQL", radius: 130, angle: 35, speed: 30, layer: "deep" },
-  { label: "Docker", radius: 140, angle: 150, speed: 35, layer: "deep" },
-  { label: "AWS", radius: 135, angle: 260, speed: 32, layer: "deep" },
-
-  // outer safe layer (still inside!)
-  { label: "Agentic AI", radius: 150, angle: 90, speed: 40, layer: "outer" },
-  { label: "Generative AI", radius: 155, angle: 200, speed: 45, layer: "outer" },
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["Java", "JavaScript (ES6+)", "TypeScript"],
+  },
+  {
+    title: "Frontend",
+    skills: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "shadcn/ui"],
+  },
+  {
+    title: "Backend",
+    skills: ["Node.js", "Express.js", "REST APIs"],
+  },
+  {
+    title: "Databases",
+    skills: ["MongoDB", "PostgreSQL", "Prisma ORM"],
+  },
+  {
+    title: "AI/LLM",
+    skills: ["Gemini API", "Prompt Engineering", "LLM Workflow Integration", "Agentic AI", "N8N"],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: ["AWS EC2", "Docker", "Vercel", "Netlify", "Render", "CI/CD"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Postman", "Thunder Client"],
+  },
 ];
 
-
+const skillSpheres = [
+  { label: "React", radius: 90, angle: 10 },
+  { label: "Next.js", radius: 115, angle: 60 },
+  { label: "Gemini", radius: 85, angle: 130 },
+  { label: "Tailwind", radius: 125, angle: 200 },
+  { label: "Node.js", radius: 100, angle: 250 },
+  { label: "Express", radius: 110, angle: 310 },
+  { label: "MongoDB", radius: 70, angle: 340 },
+  { label: "PostgreSQL", radius: 130, angle: 35, layer: "deep" },
+  { label: "Docker", radius: 140, angle: 150, layer: "deep" },
+  { label: "AWS EC2", radius: 135, angle: 260, layer: "deep" },
+  { label: "Prisma", radius: 150, angle: 90, layer: "outer" },
+  { label: "TypeScript", radius: 155, angle: 200, layer: "outer" },
+];
 
 const bubbleMotion = {
   initial: { opacity: 0, scale: 0.8 },
@@ -34,30 +59,41 @@ const bubbleMotion = {
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Skills" subtitle="Tech universe ">
+    <Section id="skills" title="Skills" subtitle="Tech universe">
       <div className="relative card overflow-hidden group cursor-default">
         <div className="grid lg:grid-cols-[1.1fr_.9fr] gap-10 p-8">
-          <div className="space-y-4">
-             <p className="text-base font-semibold text-[rgb(var(--muted))]">
-              "Tools change, stacks change, languages change. The only thing that keeps an Engineer relevant is relentless learning."
+          <div className="space-y-5">
+            <p className="text-base font-semibold text-[rgb(var(--muted))]">
+              &ldquo;Tools change, stacks change, languages change. The only thing that keeps an Engineer relevant is relentless learning.&rdquo;
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {["MERN STACK", "Next.js 16", "Agentic AI", "GEN AI", "AWS/Docker", "LLM Integration","Git &GitHub", "AI Tools Expert", "Prompt Engineering"].map((chip, i) => (
-                <motion.span
-                  key={chip}
-                  className="px-3 py-2 rounded-xl border border-white/10 bg-white/40 dark:bg-white/10 text-xs font-medium text-center backdrop-blur transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:scale-105 cursor-default"
+            <div className="space-y-4">
+              {skillCategories.map((category, i) => (
+                <motion.div
+                  key={category.title}
                   variants={bubbleMotion}
                   initial="initial"
                   whileInView="animate"
-                  whileHover={{ scale: 1.05 }}
                   viewport={{ once: true }}
                   custom={i}
                 >
-                  {chip}
-                </motion.span>
+                  <h4 className="text-xs uppercase tracking-[0.2em] text-blue-400/80 mb-2">
+                    {category.title}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 rounded-xl border border-white/10 bg-white/40 dark:bg-white/10 text-xs font-medium backdrop-blur transition-all duration-300 hover:border-blue-400/40 hover:bg-blue-500/10 hover:scale-105"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
+
           <div className="relative h-80">
             <div className="absolute inset-10 rounded-full border border-white/15" />
             <div className="absolute inset-4 rounded-full border border-white/10 blur-sm" />
@@ -68,8 +104,8 @@ export default function Skills() {
                 style={{
                   width: "82px",
                   height: "82px",
-                  top: `calc(50% - 41px)`,
-                  left: `calc(50% - 41px)`,
+                  top: "calc(50% - 41px)",
+                  left: "calc(50% - 41px)",
                 }}
                 custom={index}
                 variants={bubbleMotion}
@@ -81,7 +117,7 @@ export default function Skills() {
                   transition: {
                     repeat: Infinity,
                     ease: "linear",
-                    duration: skill.orbit === "slow" ? 26 : 18,
+                    duration: 18,
                     delay: index * 0.2,
                   },
                 }}
@@ -105,7 +141,7 @@ export default function Skills() {
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <span className="text-xs">Core</span>
-                <strong className="text-sm">MERN</strong>
+                <strong className="text-sm">Full Stack</strong>
               </motion.div>
             </div>
           </div>

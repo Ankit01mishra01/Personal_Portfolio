@@ -4,8 +4,10 @@ import { useState } from "react";
 
 const socials = [
   { label: "Email", value: "ankit.forwork09@gmail.com", href: "mailto:ankit.forwork09@gmail.com" },
+  { label: "Phone", value: "+91 6263491402", href: "tel:+916263491402" },
   { label: "GitHub", value: "github.com/Ankit01mishra01", href: "https://github.com/Ankit01mishra01" },
-  { label: "LinkedIn", value: "linkedin.com/in/ankit-mishra09", href: "https://www.linkedin.com/in/ankit-mishra09" },
+  { label: "LinkedIn", value: "linkedin.com/in/ankitmishra09", href: "https://www.linkedin.com/in/ankitmishra09" },
+  { label: "Portfolio", value: "ankitpersonalportfolio.vercel.app", href: "https://ankitpersonalportfolio.vercel.app/" },
 ];
 
 export default function Contact() {
@@ -51,8 +53,8 @@ export default function Contact() {
           hover:border-blue-400/40 hover:scale-[1.015]
         ">
           <p className="text-sm text-white/60 leading-relaxed">
-            Prefer replies within 24 hours.  
-            Share project briefs, role details, or anything you'd like to collaborate on.
+            Based in Indore, Madhya Pradesh, India. Prefer replies within 24 hours.
+            Share project briefs, role details, or anything you&apos;d like to collaborate on.
           </p>
 
           <div className="mt-6 space-y-4">
@@ -61,6 +63,7 @@ export default function Contact() {
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="
                   flex items-center justify-between
                   rounded-2xl border border-white/10
